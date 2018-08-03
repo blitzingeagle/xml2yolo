@@ -65,6 +65,7 @@ num_classes = 0
 
 dirpath = "voc"
 classes_txt = "classes.txt"
+ext = ".jpg"
 
 if os.path.isfile(classes_txt):
     with open(classes_txt, "r") as f:
@@ -81,7 +82,7 @@ for xmlPath in xmlPaths:
         for shape in shapes:
             class_name = shape[0]
             box = shape[1]
-            filename = shape[2]
+            filename = os.path.splittext(xmlPath)[0] + ext
 
             if class_name not in classes.keys():
                 classes[class_name] = num_classes
