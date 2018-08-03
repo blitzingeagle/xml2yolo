@@ -63,9 +63,14 @@ class PascalVocReader:
 classes = dict()
 num_classes = 0
 
-dirpath = "voc"
-classes_txt = "classes.txt"
-ext = ".jpg"
+try:
+    input = raw_input
+except NameError:
+    pass
+
+dirpath = input("Directory path with XML files: ")
+classes_txt = input("File containing classes: ")
+ext = input("Image file extension: ")
 
 if os.path.isfile(classes_txt):
     with open(classes_txt, "r") as f:
