@@ -77,18 +77,18 @@ if os.path.isfile(classes_txt):
         class_list = f.read().strip().split()
         classes = {k : v for (v, k) in enumerate(class_list)}
 
-filePaths = glob(dirpath + "/*" + ext)
-# xmlPaths = glob(dirpath + "/*.xml")
+imgPaths = glob(dirpath + "/*" )
+xmlPaths = glob(dirpath + "/*.xml")
 
-for filePath in filePaths:
+for xmlPath in xmlPaths:
     tVocParseReader = PascalVocReader(xmlPath)
     shapes = tVocParseReader.getShapes()
 
-    with open(filePath + ".txt", "w") as f:
+    with open(xmlPath[:-4] + ".txt", "w") as f:
         for shape in shapes:
             class_name = shape[0]
             box = shape[1]
-            filename = filePath + ext
+            filename = os.path.splittext(xmlPath)[0] + ext
 
             if class_name not in classes.keys():
                 classes[class_name] = num_classes
