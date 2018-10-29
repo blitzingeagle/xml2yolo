@@ -81,7 +81,7 @@ filePaths = glob(dirpath + "/*" + ext)
 # xmlPaths = glob(dirpath + "/*.xml")
 
 for filePath in filePaths:
-    tVocParseReader = PascalVocReader(xmlPath)
+    tVocParseReader = PascalVocReader(filePath + XML_EXT)
     shapes = tVocParseReader.getShapes()
 
     with open(filePath + ".txt", "w") as f:
