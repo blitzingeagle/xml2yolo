@@ -82,10 +82,14 @@ filePaths = glob(dirpath + "/*" + ext)
 
 for filePath in filePaths:
     filePath = os.path.splitext(filePath)[0]
-    tVocParseReader = PascalVocReader(filePath + XML_EXT)
-    shapes = tVocParseReader.getShapes()
 
     with open(filePath + ".txt", "w") as f:
+        if not os.path.isfile(filePath + XML_EXT):
+            continue
+
+        tVocParseReader = PascalVocReader(filePath + XML_EXT)
+        shapes = tVocParseReader.getShapes()
+
         for shape in shapes:
             class_name = shape[0]
             box = shape[1]
